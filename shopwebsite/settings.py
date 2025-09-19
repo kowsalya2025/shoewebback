@@ -130,7 +130,9 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
+
     "https://vercel.com/kowsalya2025s-projects/shoewebfront",  # React frontend
+
 ]
 
 REST_FRAMEWORK = {
