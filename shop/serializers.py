@@ -1,9 +1,20 @@
 from rest_framework import serializers
-from .models import Product  # ✅ use your actual model
+from django.contrib.auth.models import User
 
-class ProductSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)
+
     class Meta:
-        model = Product
-        fields = '__all__'
+        model = User
+        fields = ["username", "email", "password"]
+
+    def create(self, validated_data):
+        user = User.objects.create_user(
+            username=validated_data["username"],
+            email=validated_data.get("email"),
+            password=validated_data["password"],
+        )
+        return user
+
 
 
